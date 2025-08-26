@@ -1,0 +1,294 @@
+
+/* Enforce mobile-friendly, no-overflow layout */
+
+/* REMOVE all forced width/max-width overrides and let Tailwind handle layout */
+/* Responsive tweaks for mobile */
+@media (max-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+  body {
+    padding: 0 !important;
+  }
+  .container, .max-w-7xl, .mx-auto {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  .rounded-2xl, .rounded-3xl, .rounded-xl {
+    border-radius: 1rem !important;
+  }
+  .p-10, .p-8, .p-7, .p-6, .p-5, .p-4 {
+    padding: 1.25rem !important;
+  }
+  .text-2xl, .text-3xl, .text-4xl, .text-5xl {
+    font-size: 1.25rem !important;
+    line-height: 1.5rem !important;
+  }
+  .flex-row, .md\:flex-row {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  .gap-6, .gap-8, .gap-10 {
+    gap: 1rem !important;
+  }
+  .grid-cols-4, .md\:grid-cols-4, .md\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+  .space-y-6, .space-y-8, .space-y-10 {
+    gap: 1rem !important;
+  }
+  .shadow-2xl, .shadow-xl, .shadow-lg {
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10) !important;
+  }
+  .rounded-full {
+    border-radius: 9999px !important;
+  }
+  .px-8, .px-6, .px-4 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .py-12, .py-8, .py-6, .py-4 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern professional color palette */
+@layer base {
+  :root {
+    /* HSL values (H S% L%) for proper theming */
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 239 84% 67%; /* indigo-500 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 152 76% 36%; /* emerald-500 */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 267 88% 66%; /* violet-500 */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 85% 61%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 239 84% 67%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222.2 84% 4.9%;
+    --sidebar-primary: 239 84% 67%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 215 20% 65%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 239 84% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 239 84% 67%;
+    --primary-foreground: 222.2 84% 4.9%;
+
+    --secondary: 152 76% 36%;
+    --secondary-foreground: 222.2 84% 4.9%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 267 88% 66%;
+    --accent-foreground: 222.2 84% 4.9%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 239 84% 67%;
+
+    --sidebar-background: 222.2 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 239 84% 67%;
+    --sidebar-primary-foreground: 222.2 84% 4.9%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 215 20% 65%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 239 84% 67%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern", "liga", "clig", "calt";
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.25);
+    color: white;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Modern gradient utilities */
+@layer utilities {
+  .bg-gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+  
+  .bg-gradient-feature {
+    background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--muted)));
+  }
+  
+  .bg-gradient-cta {
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--primary)));
+  }
+  
+  .bg-gradient-accent {
+    background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)));
+  }
+  
+  .bg-gradient-subtle {
+    background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--muted)));
+  }
+
+  /* Dark, professional hero background */
+  .bg-hero-dark {
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+  }
+
+  /* Subtle vignette for edge darkening */
+  .bg-vignette {
+    background: radial-gradient(120% 80% at 50% 50%, transparent 40%, rgba(0,0,0,0.35) 100%);
+  }
+
+  /* Animated starfield background */
+  @keyframes move-stars {
+    0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+    100% { background-position: -1000px -1000px, 800px 800px, -600px 600px, 1200px -900px; }
+  }
+  .bg-stars {
+    background-image:
+      radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8) 50%, transparent 51%),
+      radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.65) 50%, transparent 51%),
+      radial-gradient(1px 1px at 50px 160px, rgba(255,255,255,0.9) 50%, transparent 51%),
+      radial-gradient(3px 3px at 120px 90px, rgba(255,255,255,0.5) 50%, transparent 51%);
+    background-size: 180px 180px, 280px 280px, 120px 120px, 360px 360px;
+    animation: move-stars 60s linear infinite;
+  }
+
+  /* Cursor spotlight follows the mouse using CSS vars set in JS */
+  .bg-cursor-spotlight {
+    background: radial-gradient(900px circle at var(--mouse-x, 50%) var(--mouse-y, 20%), rgba(255,255,255,0.22), transparent 62%);
+    pointer-events: none;
+  }
+
+  /* Parallax transform layer controlled by CSS vars */
+  .parallax-layer {
+    will-change: transform;
+    transform: translate(calc(var(--parallax-x, 0px) / 30), calc(var(--parallax-y, 0px) / 30));
+  }
+
+  /* HR page: custom cursor ring animation */
+  @keyframes ringPulse {
+    0% { box-shadow: 0 0 12px 3px rgba(75,108,183,0.28), 0 0 32px 8px rgba(24,40,72,0.20); opacity: 0.9; }
+    50% { box-shadow: 0 0 16px 5px rgba(75,108,183,0.42), 0 0 48px 12px rgba(24,40,72,0.28); opacity: 1; }
+    100% { box-shadow: 0 0 12px 3px rgba(75,108,183,0.28), 0 0 32px 8px rgba(24,40,72,0.20); opacity: 0.9; }
+  }
+  .cursor-ring {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 9999px;
+    border: 2px solid rgba(255,255,255,0.9);
+    mix-blend-mode: screen;
+    pointer-events: none;
+    transform: translate(calc(var(--hr-x, -100px) - 12px), calc(var(--hr-y, -100px) - 12px));
+    transition: transform 60ms ease-out;
+    animation: ringPulse 2s ease-in-out infinite;
+    z-index: 50;
+  }
+
+  /* Modern text wrapping */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Animated multi-color gradient background */
+  @keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .bg-animated-gradient {
+    background-image: linear-gradient(120deg,
+      hsl(var(--primary)),
+      hsl(var(--secondary)),
+      hsl(var(--accent))
+    );
+    background-size: 200% 200%;
+    animation: gradient-x 12s ease-in-out infinite;
+  }
+
+  /* Subtle dot grid overlay */
+  .bg-grid-dots {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Soft spotlight to draw focus to the center */
+  .bg-spotlight {
+    background-image: radial-gradient(600px circle at 50% 20%, hsl(var(--foreground) / 0.12), transparent 40%);
+  }
+
+  /* Fine noise/texture overlay */
+  .bg-noise {
+    background-image:
+      repeating-linear-gradient(0deg, hsl(var(--foreground) / 0.015) 0px, hsl(var(--foreground) / 0.015) 1px, transparent 1px, transparent 2px),
+      repeating-linear-gradient(90deg, hsl(var(--foreground) / 0.015) 0px, hsl(var(--foreground) / 0.015) 1px, transparent 1px, transparent 2px);
+  }
+
+  /* Glassy panel utility for readable content over rich backgrounds */
+  .glass-panel {
+    background-color: hsl(var(--card) / 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 10px 40px hsl(var(--foreground) / 0.08);
+  }
+}
